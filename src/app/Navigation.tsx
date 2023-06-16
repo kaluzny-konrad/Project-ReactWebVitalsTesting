@@ -23,7 +23,7 @@ export default function Navigation({}: Props) {
             const isActive = href === pathname;
 
             return (
-              <li>
+              <li key={href}>
                 <Link
                   href={href}
                   className={`${
