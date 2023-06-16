@@ -1,3 +1,5 @@
+url: https://react-web-vitals-testing.vercel.app/good-cls-bad-lcp
+
 # Proces wdrożenia na Vercel
 
 1. Clone app
