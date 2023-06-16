@@ -1,3 +1,10 @@
+# Proces wdrożenia na Vercel
+
+1. Clone app
+1. Wypushować projekt na GitHuba
+1. Na Vercel wybrać opcję Add New... -> Project i zaimportować projekt z GitHuba
+1. Wejść do wdrożonej aplikacji -> Speed Insights -> Wystarczy kliknąć Enable
+
 # ReactWebVitalsTesting
 
 ## Getting Started

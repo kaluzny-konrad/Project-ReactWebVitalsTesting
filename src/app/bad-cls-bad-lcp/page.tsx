@@ -16,17 +16,10 @@ const Page: NextPage = () => {
       {/* Lazy-loaded content at the top */}
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
         <h2 className="text-xl font-bold mb-2">Lazy Content (LCP + CLS)</h2>
-        <div style={{ width: "100%", height: "400px", position: "relative" }}>
-          <Image
-            src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
-            fill={true}
-            quality={100}
-            placeholder="empty"
-            className="rounded next-image"
-            alt="Picture of the cls"
-          />
-        </div>
-        <p className="text-gray-600 mt-2">Ten obraz jest duży (ładuje się stosunkowo szybko) i posiada natywny placeholder.</p>
+        <LazyContent />
+        <p className="text-gray-600 mt-2">
+        Ten obraz jest duży z opóźnionym ładowaniem i nie posiada placeholdera.
+        </p>
       </div>
 
       <h1 className="text-3xl font-bold mb-4">Test Page</h1>
@@ -48,9 +41,37 @@ const Page: NextPage = () => {
         quality={100}
         className="rounded next-image"
         alt="Picture of the cls"
-        placeholder="empty"
+        priority
       />
     </div>
+  );
+};
+
+const LazyContent = () => {
+  const [showContent, setShowContent] = useState(false);
+
+  // Simulating lazy loading
+  setTimeout(() => {
+    setShowContent(true);
+  }, 2000);
+
+  return (
+    <>
+      {showContent && (
+        <>
+          <div style={{ width: "100%", height: "400px", position: "relative" }}>
+            <Image
+              src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
+              fill={true}
+              quality={100}
+              placeholder="empty"
+              className="rounded next-image"
+              alt="Picture of the cls"
+            />
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
-const TestPage: NextPage = () => {
+const Page: NextPage = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,4 +76,4 @@ const LazyContent = () => {
   );
 };
 
-export default TestPage;
+export default Page;

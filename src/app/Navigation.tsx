@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Bad CLS Bad LCP" },
+  { href: "/", label: "Home" },
   { href: "/good-cls-good-lcp", label: "Good CLS Good LCP" },
   { href: "/good-cls-bad-lcp", label: "Good CLS Bad LCP" },
   { href: "/bad-cls-good-lcp", label: "Bad CLS Good LCP" },
+  { href: "/bad-cls-bad-lcp", label: "Bad CLS Bad LCP" },
 ];
 
 type Props = {};
