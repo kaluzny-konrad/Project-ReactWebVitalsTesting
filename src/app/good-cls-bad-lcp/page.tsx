@@ -18,7 +18,7 @@ const TestPage: NextPage = () => {
         <h2 className="text-xl font-bold mb-2">Lazy Content (LCP + CLS)</h2>
         <LazyContent />
         <p className="text-gray-600 mt-2">
-        Ten obraz jest duży z opóźnionym ładowaniem i nie posiada placeholdera.
+          Ten obraz jest duży z opóźnionym ładowaniem i posiada placeholder.
         </p>
       </div>
 
@@ -57,7 +57,7 @@ const LazyContent = () => {
 
   return (
     <>
-      {showContent && (
+      {showContent ? (
         <>
           <div style={{ width: "100%", height: "400px", position: "relative" }}>
             <Image
@@ -70,6 +70,10 @@ const LazyContent = () => {
             />
           </div>
         </>
+      ) : (
+        <div
+          style={{ width: "100%", height: "400px", position: "relative" }}
+        ></div>
       )}
     </>
   );
