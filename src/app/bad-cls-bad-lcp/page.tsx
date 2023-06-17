@@ -2,47 +2,34 @@
 
 import React, { useState } from "react";
 import { NextPage } from "next";
-import Image from "next/image";
+import BigImage from "@/components/images/BigImage";
+import SmallImage from "@/components/images/SmallImage";
 
 const Page: NextPage = () => {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <div className="container mx-auto p-4">
-      {/* Lazy-loaded content at the top */}
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
-        <h2 className="text-xl font-bold mb-2">Lazy Content (LCP + CLS)</h2>
+        <h2 className="text-xl font-bold mb-2">Lazy (Bad CLS i LCP)</h2>
         <LazyContent />
-        <p className="text-gray-600 mt-2">
-        Ten obraz jest duży z opóźnionym ładowaniem i nie posiada placeholdera.
-        </p>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">Test Page</h1>
-      <label className="flex flex-col mb-4">
-        <span className="mb-1">Test Input:</span>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          className="border border-gray-300 rounded px-3 py-2"
-        />
-      </label>
-      <br />
-      <br />
-      <Image
-        src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
-        width={200}
-        height={200}
-        quality={100}
-        className="rounded next-image"
-        alt="Picture of the cls"
-        priority
-      />
+      <h1 className="text-3xl font-bold mb-4">Server rendering</h1>
+      <SmallImage />
+
+      <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
+        <h2 className="text-xl font-bold mb-2">Wnioski z podstrony</h2>
+        <p className="text-gray-600 mt-2">
+          - lazy load: 4s; placeholder: nie; największy content: tak;
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Występuje przy lazy loadowaniu dużego contentu bez placeholdera w{" "}
+          <b>viewporcie usera</b>.
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Viewport będzie różny dla mobile, desktop, tabletu pionowo i tabletu
+          poziomo. Scroll wpływa na viewport.
+        </p>
+      </div>
     </div>
   );
 };
@@ -53,26 +40,9 @@ const LazyContent = () => {
   // Simulating lazy loading
   setTimeout(() => {
     setShowContent(true);
-  }, 2000);
+  }, 4000);
 
-  return (
-    <>
-      {showContent && (
-        <>
-          <div style={{ width: "100%", height: "400px", position: "relative" }}>
-            <Image
-              src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
-              fill={true}
-              quality={100}
-              placeholder="empty"
-              className="rounded next-image"
-              alt="Picture of the cls"
-            />
-          </div>
-        </>
-      )}
-    </>
-  );
+  return <>{showContent && <BigImage />}</>;
 };
 
 export default Page;

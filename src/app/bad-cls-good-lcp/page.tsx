@@ -2,48 +2,42 @@
 
 import React, { useState } from "react";
 import { NextPage } from "next";
-import Image from "next/image";
+import BigImage from "@/components/images/BigImage";
+import SmallImage from "@/components/images/SmallImage";
 
 const Page: NextPage = () => {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <div className="container mx-auto p-4">
-      {/* Lazy-loaded content at the top */}
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
-        <h2 className="text-xl font-bold mb-2">Lazy Content (LCP + CLS)</h2>
+        <h2 className="text-xl font-bold mb-2">Lazy (Bad CLS + Good LCP)</h2>
         <LazyContent />
-        <p className="text-gray-600 mt-2">
-        Ten obraz jest mały z opóźnionym ładowaniem i nie posiada placeholdera. Poniżej jest duży obraz liczony jako LCP.
-        </p>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">Test Page</h1>
-      <label className="flex flex-col mb-4">
-        <span className="mb-1">Test Input:</span>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          className="border border-gray-300 rounded px-3 py-2"
-        />
-      </label>
-      <br />
-      <br />
-      <div style={{ width: "100%", height: "400px", position: "relative" }}>
-            <Image
-              src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
-              fill={true}
-              quality={100}
-              placeholder="empty"
-              className="rounded next-image"
-              alt="Picture of the cls"
-            />
-          </div>
+      <h1 className="text-3xl font-bold mb-4">Server rendering</h1>
+      <BigImage />
+
+      <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
+        <h2 className="text-xl font-bold mb-2">Wnioski z podstrony</h2>
+        <p className="text-gray-600 mt-2">
+          - lazy load: tak; placeholder: nie; największy content: nie;
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Występuje gdy lazy loadujemy mały content bez placeholdera.
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Aby uzyskać ten stan w viewporcie usera musi pokazać się duży
+          content bez lazy loada (lub załadować się szybko) - inaczej LCP
+          również będzie złe.
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Jeżeli user nie ma w viewPorcie contentu bez placeholdera, to nie
+          odczuje skoku strony - CLS będzie dobry.
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Na podstronie da się to uzyskać scrollując się w dół, zanim obrazek
+          się doładuje.
+        </p>
+      </div>
     </div>
   );
 };
@@ -54,26 +48,9 @@ const LazyContent = () => {
   // Simulating lazy loading
   setTimeout(() => {
     setShowContent(true);
-  }, 2000);
+  }, 4000);
 
-  return (
-    <>
-      {showContent && (
-        <>
-          <div style={{ width: "100%", height: "200px", position: "relative" }}>
-            <Image
-              src="https://img.freepik.com/darmowe-zdjecie/lotnicze-piekne-zdjecia-wybrzeza-ze-wzgorzami-na-tle-o-zachodzie-slonca_181624-24143.jpg?w=3918"
-              fill={true}
-              quality={100}
-              placeholder="empty"
-              className="rounded next-image"
-              alt="Picture of the cls"
-            />
-          </div>
-        </>
-      )}
-    </>
-  );
+  return <>{showContent && <SmallImage />}</>;
 };
 
 export default Page;
