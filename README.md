@@ -7,7 +7,7 @@ url: https://react-web-vitals-testing.vercel.app/good-cls-bad-lcp
 1. Na Vercel wybrać opcję Add New... -> Project i zaimportować projekt z GitHuba
 1. Wejść do wdrożonej aplikacji -> Speed Insights -> Wystarczy kliknąć Enable
 
-Aplikacja wdroży się automatycznie na produkcję w ciągu 30 sekund od Git Pusha.
+Aplikacja wdroży się automatycznie na produkcję w ciągu 30 sekund od każdego Git Pusha do mastera.
 
 # ReactWebVitalsTesting
 
