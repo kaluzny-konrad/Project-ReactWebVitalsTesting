@@ -11,6 +11,8 @@ const Page: NextPage = () => {
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
         <h2 className="text-xl font-bold mb-2">Lazy (Bad CLS + Good LCP)</h2>
         <LazyContent />
+        <LazyContent />
+        <LazyContent />
       </div>
 
       <h1 className="text-3xl font-bold mb-4">Server rendering</h1>

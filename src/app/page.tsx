@@ -1,6 +1,5 @@
 import React from "react";
 import { NextPage } from "next";
-import styles from "./HomePage.module.css";
 
 const HomePage: NextPage = () => {
   return (
