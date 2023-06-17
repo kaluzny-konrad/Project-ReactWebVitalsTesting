@@ -9,9 +9,7 @@ url: https://react-web-vitals-testing.vercel.app/good-cls-bad-lcp
 
 Aplikacja wdroży się automatycznie na produkcję w ciągu 30 sekund od każdego Git Pusha do mastera.
 
-# ReactWebVitalsTesting
-
-## Getting Started
+## NPX Info
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
