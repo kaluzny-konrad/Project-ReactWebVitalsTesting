@@ -16,6 +16,17 @@ const HomePage: NextPage = () => {
           - Na dole każdej podstrony znajdują się szczegółowe wnioski na temat
           lazy loada (np. jego potencjalny wpływ na CLS i LCP).
         </p>
+        <p className="text-gray-600 mt-2">
+          - Aby zaobserwować wszystkie wyniki w konsoli należy wybrać opcję
+          'Preserve logs', odczekać na pełne załadowanie i odświeżyć stronę
+          (niektóre webvitals generowane są przed wyjściem ze strony)
+        </p>
+        <p className="text-gray-600 mt-2">
+          - Cała strona ładowana jest po stronie usera ('use client'). W efekcie
+          przy przełączaniu tabów tylko 'HardNav' powoduje przeładowanie strony.
+          Opcja 'SoftNav' nie zawsze generuje webvitalse (trzeba przeładować
+          stronę).
+        </p>
       </div>
 
       <h1 className="text-3xl font-bold mb-4">Server rendering</h1>
