@@ -5,8 +5,11 @@ import { NextPage } from "next";
 import BigImage from "@/components/images/BigImage";
 import SmallestImage from "@/components/images/SmallestImage";
 import SmallestImagePlaceholder from "@/components/images/SmallestImagePlaceholder";
+import logPageReload from "@/helpers/console/logPageReload";
+import { usePathname } from "next/navigation";
 
 const Page: NextPage = () => {
+  logPageReload(usePathname());
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Server rendering</h1>

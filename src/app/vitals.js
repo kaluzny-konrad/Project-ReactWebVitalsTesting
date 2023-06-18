@@ -2,6 +2,21 @@
 
 const vitalsApiUrl = "/analytics";
 
+export function sendToAnalytics(metric, options) {
+  consoleLog(metric);
+  // sendToApi(metric);
+}
+
+function consoleLog(metric) {
+  console.log(`%c> i [Local Analytics - vital info] 
+    metric: ${metric.name}, 
+    value: ${metric.value.toString()}, 
+    rating: ${metric.rating},
+    navigationType: ${metric.navigationType},
+    connection speed: ${getConnectionSpeed()}`, 
+    `background: ${metric.rating === "good" ? '#CCFFCC' : '#FF9999'};`);
+}
+
 function getConnectionSpeed() {
   return "connection" in navigator &&
     navigator["connection"] &&
@@ -10,25 +25,16 @@ function getConnectionSpeed() {
     : "";
 }
 
-export function sendToAnalytics(metric, options) {
+function sendToApi(metric) {
   const body = JSON.stringify(metric);
-
-  console.log(`[Local Analytics - vital info] 
-    metric: ${metric.name}, 
-    value: ${metric.value.toString()}, 
-    rating: ${metric.rating},
-    navigationType: ${metric.navigationType},
-    connection speed: ${getConnectionSpeed()}`);
-
-  // console.log("[Local Analytics - all]", metric.name, body);
-
   // Pozwala na przekazanie informacji o wydajności do Google Analytics lub innego API
   const blob = new Blob([new URLSearchParams(body).toString()], {
     type: "application/x-www-form-urlencoded",
   });
   if (navigator.sendBeacon) {
     navigator.sendBeacon(vitalsApiUrl, blob);
-  } else
+  }
+  else
     fetch(vitalsApiUrl, {
       body,
       method: "POST",
@@ -36,3 +42,4 @@ export function sendToAnalytics(metric, options) {
       keepalive: true,
     });
 }
+

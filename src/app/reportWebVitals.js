@@ -5,12 +5,12 @@ const reportWebVitals = onPerfEntry => {
       import('web-vitals') // standard info
       //import('web-vitals/attribution') // more info
       .then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
-        onCLS(onPerfEntry);
-        onFID(onPerfEntry);
-        onFCP(onPerfEntry);
-        onLCP(onPerfEntry);
-        onTTFB(onPerfEntry);
-        onINP(onPerfEntry);
+        onCLS(onPerfEntry); // Cumulative Layout Shift
+        // onFID(onPerfEntry); // First Input Delay
+        // onFCP(onPerfEntry); // First Contentful Paint
+        onLCP(onPerfEntry); // Largest Contentful Paint
+        // onTTFB(onPerfEntry); // Time to First Byte
+        // onINP(onPerfEntry); // Interaction to Next Paint
       });
     }
   };

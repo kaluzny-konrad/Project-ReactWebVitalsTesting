@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import { NextPage } from "next";
 import BigImage from "@/components/images/BigImage";
 import SmallImage from "@/components/images/SmallImage";
+import logPageReload from "@/helpers/console/logPageReload";
+import { usePathname } from "next/navigation";
 
 const Page: NextPage = () => {
+  logPageReload(usePathname());
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
