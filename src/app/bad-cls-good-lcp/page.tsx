@@ -21,7 +21,7 @@ const Page: NextPage = () => {
       <div className="bg-gray-200 p-8 rounded mt-4 mb-4">
         <h2 className="text-xl font-bold mb-2">Wnioski z podstrony</h2>
         <p className="text-gray-600 mt-2">
-          - lazy load: tak; placeholder: nie; największy content: nie;
+          - lazy load: 4s; placeholder: nie; największy content: nie;
         </p>
         <p className="text-gray-600 mt-2">
           - Występuje gdy lazy loadujemy mały content bez placeholdera.
