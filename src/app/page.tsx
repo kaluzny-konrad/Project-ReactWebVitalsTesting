@@ -72,6 +72,11 @@ const HomePage: NextPage = () => {
           akcje użytkownika (najlepiej w sposób automatyczny ograniczający błąd
           ludzki).
         </p>
+        <p className="text-gray-600 mt-2">
+          - WebVitals zliczają się przy cofaniu tylko w wypadku przeładowania
+          strony (akcje wykonywane po stronie klienta nie generują nowych
+          vitalsów).
+        </p>
       </div>
     </div>
   );
