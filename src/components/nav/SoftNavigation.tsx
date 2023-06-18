@@ -17,7 +17,7 @@ type Props = {};
 export default function SoftNavigation({}: Props) {
   const pathname = usePathname();
   return (
-    <div className="flex items-center justify-between py-2 bg-gray-200 border-b-2 border-solid border-stone-400">
+    <div className="flex items-center justify-between py-2 bg-gray-200 border-b-2 border-solid border-stone-400 h-10">
       <div className="container mx-auto px-4 flex">
         <p className="mr-2">SoftNav</p>
         <ul className="flex space-x-4">
